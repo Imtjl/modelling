@@ -1,0 +1,14 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Схема эксперимента}{1}{}%
+\contentsline {section}{\numberline {2}Заполненная таблица 1.1}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Формулы для расчёта}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Пример расчёта для \( k = 2 \)}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Результаты расчётов}{4}{}%
+\contentsline {subsection}{\numberline {2.4}Вычисление значения внутреннего сопротивления и его погрешности}{5}{}%
+\contentsline {subsection}{\numberline {2.5}Вычисление тока короткого замыкания и его погрешности}{5}{}%
+\contentsline {subsection}{\numberline {2.6}Результат}{6}{}%
+\contentsline {subsection}{\numberline {2.7}Заполненная таблица 1.1}{6}{}%
+\contentsline {section}{\numberline {3}Пример расчёта для одной строки таблицы}{7}{}%
+\contentsline {section}{\numberline {4}Расчётная внешняя характеристика источника}{8}{}%
+\contentsline {section}{\numberline {5}Графики зависимости $P_n(I_n)$ и $\eta (I_n)$}{9}{}%
+\contentsline {section}{\numberline {6}Выводы по работе}{9}{}%
