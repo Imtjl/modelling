@@ -8,6 +8,7 @@
 *.log
 *.out
 *.synctex.gz
+*.toc
 
 # Ignore binary files
 *_out
