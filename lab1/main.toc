@@ -1,9 +1,13 @@
 \babel@toc {russian}{}\relax 
-\contentsline {section}{\numberline {1}Цель работы}{2}{}%
-\contentsline {section}{\numberline {2}Введение и статистический анализ числовой последовательности}{2}{}%
-\contentsline {section}{\numberline {3}Графический анализ последовательности}{2}{}%
-\contentsline {section}{\numberline {4}Анализ распределения}{2}{}%
-\contentsline {section}{\numberline {5}Генерация случайной последовательности}{3}{}%
-\contentsline {section}{\numberline {6}Сравнительный анализ}{3}{}%
-\contentsline {section}{\numberline {7}Оформление отчёта}{3}{}%
-\contentsline {section}{\numberline {8}Выводы по работе}{3}{}%
+\contentsline {section}{\numberline {1}Рассчитать числовые моменты заданной ЧП}{2}{}%
+\contentsline {section}{\numberline {2}Построение доверительных интервалов}{2}{}%
+\contentsline {subsection}{\numberline {2.1}Доверительный интервал для математического ожидания}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Относительная погрешность}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Пример расчета}{3}{}%
+\contentsline {section}{\numberline {3}Введение и статистический анализ числовой последовательности}{4}{}%
+\contentsline {section}{\numberline {4}Графический анализ последовательности}{4}{}%
+\contentsline {section}{\numberline {5}Анализ распределения}{5}{}%
+\contentsline {section}{\numberline {6}Генерация случайной последовательности}{5}{}%
+\contentsline {section}{\numberline {7}Сравнительный анализ}{5}{}%
+\contentsline {section}{\numberline {8}Оформление отчёта}{5}{}%
+\contentsline {section}{\numberline {9}Выводы по работе}{6}{}%

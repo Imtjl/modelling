@@ -4,20 +4,28 @@ import matplotlib.pyplot as plt
 import scipy.stats as stats
 import os
 
-# Чтение данных из CSV файла
-# Предположим, что данные хранятся в столбце с именем 'data'
+# read csv
 path = os.path.abspath('lab1')
 print(f"Path to data: {path}/data/data.csv")
 data_df = pd.read_csv(f"{path}/data/data.csv")
 data = data_df['data'].values
 
 # 1. Рассчёт математического ожидания, дисперсии, стандартного отклонения, коэффициента вариации
+
+# среднее арифметическое (arithmetic mean)
 mean = np.mean(data)
+# дисперсия (variance)
+# ddof = delta degrees of freedom (скорректированная дисперсия)
+# т.е. если степень свободы 1, то мы корректируем выборку как / (n - 1)
 variance = np.var(data, ddof=1)
+# std = standard deviation (стандартное отклонение)
 std_dev = np.std(data, ddof=1)
+# коэффициент вариации
+# |- показывает относительное отклонение данных от ср. значения в процентах
 coef_variation = (std_dev / mean) * 100
 
-# Доверительные интервалы для математического ожидания (с доверительными вероятностями 0.9, 0.95, 0.99)
+# Доверительные интервалы для математического ожидания
+# |- (с доверительными вероятностями 0.9, 0.95, 0.99)
 confidence_intervals = {}
 for confidence in [0.9, 0.95, 0.99]:
     ci = stats.t.interval(confidence, len(data) - 1, loc=mean, scale=std_dev / np.sqrt(len(data)))
