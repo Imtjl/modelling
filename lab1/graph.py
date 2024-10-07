@@ -1,0 +1,22 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Чтение данных из CSV-файла
+data = pd.read_csv("data.csv")
+
+# Печать первых 5 строк для проверки
+print(data.head())
+
+# Извлечение значений
+sequence = data["values"].tolist()
+
+# Номера индексов для оси X
+x_values = list(range(len(sequence)))
+
+# Построение графика
+plt.plot(x_values, sequence)
+plt.title("График значений последовательности")
+plt.xlabel("Индекс")
+plt.ylabel("Значение")
+plt.grid()
+plt.show()
