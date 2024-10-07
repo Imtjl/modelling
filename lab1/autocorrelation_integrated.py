@@ -5,9 +5,10 @@ import scipy.stats as stats
 import os
 
 # read csv
-data_df = pd.read_csv("data.csv")
-sequence = data_df['values']
-data = data_df['values'].values
+path = os.path.abspath("lab1/data/data.csv")
+data_df = pd.read_csv(path)
+sequence = data_df["values"]
+data = data_df["values"].values
 
 # 1. Рассчёт математического ожидания, дисперсии, стандартного отклонения, коэффициента вариации
 
@@ -27,7 +28,9 @@ coef_variation = (std_dev / mean) * 100
 # |- (с доверительными вероятностями 0.9, 0.95, 0.99)
 confidence_intervals = {}
 for confidence in [0.9, 0.95, 0.99]:
-    ci = stats.t.interval(confidence, len(data) - 1, loc=mean, scale=std_dev / np.sqrt(len(data)))
+    ci = stats.t.interval(
+        confidence, len(data) - 1, loc=mean, scale=std_dev / np.sqrt(len(data))
+    )
     confidence_intervals[confidence] = ci
 
 
@@ -62,7 +65,9 @@ else:
 simulated_data = stats.uniform.rvs(*params, size=len(data))  # Генерация данных
 
 # Построение сравнительного графика
-autocorrelation2 = [np.corrcoef(simulated_data[:-lag], simulated_data[lag:])[0, 1] for lag in lag_values]
+autocorrelation2 = [
+    np.corrcoef(simulated_data[:-lag], simulated_data[lag:])[0, 1] for lag in lag_values
+]
 
 # Вывод значений коэффициентов автокорреляции
 print("Коэффициенты автокорреляции ГЧП со сдвигом от 1 до 10:")
@@ -86,6 +91,6 @@ results = {
     "Доверительные интервалы": confidence_intervals,
 }
 
-df_results = pd.DataFrame.from_dict(results, orient='index', columns=["Значение"])
+df_results = pd.DataFrame.from_dict(results, orient="index", columns=["Значение"])
 print(df_results)
 print(coef_variation)

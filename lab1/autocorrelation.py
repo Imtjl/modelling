@@ -1,9 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.graphics.tsaplots import plot_acf
+import os
 
 # Чтение данных из CSV-файла
-data = pd.read_csv('data.csv')
+path = os.path.abspath("lab1/data/data.csv")
+data = pd.read_csv(path)
 
 # Предположим, что данные лежат в столбце 'value'
 sequence = data['values']
