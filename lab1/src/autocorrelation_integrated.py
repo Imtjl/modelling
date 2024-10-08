@@ -5,7 +5,7 @@ import scipy.stats as stats
 import os
 
 # read csv
-path = os.path.abspath("lab1/data/data.csv")
+path = os.path.abspath("lab1/data/random_data.csv")
 data_df = pd.read_csv(path)
 sequence = data_df["values"]
 data = data_df["values"].values

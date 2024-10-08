@@ -1,6 +1,9 @@
 import math
 import random
+import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+import os
 
 # Параметры распределения Эрланга
 k = 2  # Порядок распределения
@@ -21,13 +24,24 @@ def generate_erlang(k, lambda_param, size=1000):
     return erlang_samples
 
 
-# Генерация случайных величин
-generated_data = generate_erlang(k, lambda_param)
+# Аппроксимация плотности распределения Эрланга
+def erlang_pdf(x, k, lambda_param):
+    return (lambda_param ** k * x ** (k - 1) * np.exp(-lambda_param * x)) / math.factorial(k - 1)
 
-# Визуализация
+
+# Генерация случайных величин
+path = os.path.abspath("lab1/data")
+generated_data = {
+    "values": generate_erlang(k, lambda_param),
+}
+
+df = pd.DataFrame(generated_data)
+df.to_csv(f"{path}/random_data.csv", index=False)
+
+# Визуализация сгенерированных данных
 plt.figure(figsize=(10, 6))
 plt.hist(
-    generated_data,
+    generated_data["values"],
     bins=30,
     density=True,
     alpha=0.7,
@@ -35,8 +49,15 @@ plt.hist(
     label="Сгенерированные данные",
 )
 
+# Создание линии аппроксимации
+x_values = np.linspace(0, max(generated_data["values"]), 1000)
+pdf_fitted = erlang_pdf(x_values, k, lambda_param)
+
+# Добавление линии аппроксимации на график
+plt.plot(x_values, pdf_fitted, 'r-', lw=2, label="Аппроксимация Эрланга (k=2)")
+
 # Настройки графика
-plt.title("Генерация случайных величин по распределению Эрланга")
+plt.title("Генерация случайных величин по распределению Эрланга с аппроксимацией")
 plt.xlabel("Значение")
 plt.ylabel("Плотность вероятности")
 plt.legend()

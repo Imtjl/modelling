@@ -7,7 +7,8 @@ import os
 
 # Генерация 300 случайных величин по экспоненциальному закону
 # data = np.random.exponential(scale=1, size=300)
-path = os.path.abspath("lab1/data/data.csv")
+# path = os.path.abspath("lab1/data/data.csv")
+path = os.path.abspath("lab1/data/random_data.csv")
 data_df = pd.read_csv(path)
 sequence = data_df["values"]
 data = data_df["values"].values

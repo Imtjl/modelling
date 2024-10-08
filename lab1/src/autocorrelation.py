@@ -4,7 +4,7 @@ from statsmodels.graphics.tsaplots import plot_acf
 import os
 
 # Чтение данных из CSV-файла
-path = os.path.abspath("lab1/data/data.csv")
+path = os.path.abspath("lab1/data/random_data.csv")
 data = pd.read_csv(path)
 
 # Предположим, что данные лежат в столбце 'value'
