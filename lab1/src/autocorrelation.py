@@ -22,7 +22,7 @@ for lag, coeff in zip(lag_values, autocorrelation_coeffs):
 # Графическое представление автокорреляции
 plt.figure(figsize=(10, 4))
 plt.bar(range(1, 11), autocorrelation_coeffs)
-plt.title('Автокорреляция сгенерированной ЧП (сдвиг от 1 до 10)')
+plt.title('Автокорреляция заданной ЧП (сдвиг от 1 до 10)')
 plt.xlabel('Сдвиг')
 plt.ylabel('Коэффициент автокорреляции')
 plt.show()

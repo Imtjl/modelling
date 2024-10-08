@@ -43,6 +43,7 @@ print("Коэффициенты автокорреляции со сдвигом
 for lag, coeff in zip(lag_values, autocorrelation_coeffs):
     print(f"Сдвиг {lag}: {coeff:.4f}")
 
+
 # 5. Аппроксимация распределения
 # На основе коэффициента вариации можно попробовать различные распределения
 if coef_variation < 30:
@@ -59,40 +60,11 @@ else:
     distribution = "Гиперэкспоненциальное распределение"
     # гипотетические параметры для иллюстрации
 
-# Построение гистограммы и плотности аппроксимированного распределения
-plt.figure(figsize=(10, 6))
-plt.hist(data, bins=20, density=True, edgecolor="black", alpha=0.7, label="Данные")
-plt.plot(x, y, "r-", lw=2, label=f"{distribution}")
-plt.title(f"Аппроксимация закона распределения - {distribution}")
-plt.xlabel("Значение")
-plt.ylabel("Плотность вероятности")
-plt.legend()
-plt.grid(True)
-plt.show()
-
 # 6. Сравнительный анализ между сгенерированной последовательностью и исходной
 # Здесь можно сгенерировать последовательность по выбранному распределению
 simulated_data = stats.uniform.rvs(*params, size=len(data))  # Генерация данных
 
 # Построение сравнительного графика
-plt.figure(figsize=(10, 6))
-plt.plot(
-    data, label="Исходная последовательность", marker="o", linestyle="-", color="b"
-)
-plt.plot(
-    simulated_data,
-    label="Сгенерированная последовательность",
-    marker="x",
-    linestyle="--",
-    color="r",
-)
-plt.title("Сравнение исходной и сгенерированной последовательностей")
-plt.xlabel("Индекс")
-plt.ylabel("Значение")
-plt.legend()
-plt.grid(True)
-plt.show()
-
 autocorrelation2 = [
     np.corrcoef(simulated_data[:-lag], simulated_data[lag:])[0, 1] for lag in lag_values
 ]
