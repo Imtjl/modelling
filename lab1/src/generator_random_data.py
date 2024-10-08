@@ -7,7 +7,7 @@ data = np.random.exponential(scale=1, size=300)
 # Визуализация временного ряда
 plt.figure(figsize=(10, 4))
 plt.plot(data)
-plt.title('Экспоненциальный временной ряд')
+plt.title("Экспоненциальный временной ряд")
 plt.show()
 
 # Расчет автокорреляций с лагами от 1 до 10
@@ -22,7 +22,7 @@ for lag, coeff in zip(lag_values, autocorr):
 # Визуализация автокорреляций
 plt.figure(figsize=(10, 4))
 plt.bar(range(1, 11), autocorr)
-plt.title('Автокорреляция сгенерированной ЧП (сдвиг от 1 до 10)')
-plt.xlabel('Сдвиг')
-plt.ylabel('Коэффициент автокорреляции')
+plt.title("Автокорреляция сгенерированной ЧП (сдвиг от 1 до 10)")
+plt.xlabel("Сдвиг")
+plt.ylabel("Коэффициент автокорреляции")
 plt.show()

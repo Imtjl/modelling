@@ -5,10 +5,10 @@ import scipy.stats as stats
 import os
 
 # read csv
-path = os.path.abspath('lab1')
-print(f"Path to data: {path}/data/data.csv")
-data_df = pd.read_csv(f"{path}/data/data.csv")
-data = data_df['data'].values
+path = os.path.abspath("lab1/data/data.csv")
+data_df = pd.read_csv(path)
+sequence = data_df["values"]
+data = data_df["values"].values
 
 # 1. Рассчёт математического ожидания, дисперсии, стандартного отклонения, коэффициента вариации
 
@@ -28,36 +28,20 @@ coef_variation = (std_dev / mean) * 100
 # |- (с доверительными вероятностями 0.9, 0.95, 0.99)
 confidence_intervals = {}
 for confidence in [0.9, 0.95, 0.99]:
-    ci = stats.t.interval(confidence, len(data) - 1, loc=mean, scale=std_dev / np.sqrt(len(data)))
+    ci = stats.t.interval(
+        confidence, len(data) - 1, loc=mean, scale=std_dev / np.sqrt(len(data))
+    )
     confidence_intervals[confidence] = ci
 
-# 2. Построение графика числовой последовательности
-plt.figure(figsize=(10, 6))
-plt.plot(data, marker='o', linestyle='-', color='b')
-plt.title("Числовая последовательность")
-plt.xlabel("Индекс")
-plt.ylabel("Значение")
-plt.grid(True)
-plt.show()
 
-# 3. Построение гистограммы распределения частот
-plt.figure(figsize=(10, 6))
-plt.hist(data, bins=20, edgecolor='black', alpha=0.7)
-plt.title("Гистограмма распределения частот")
-plt.xlabel("Значение")
-plt.ylabel("Частота")
-plt.grid(True)
-plt.show()
+# Автокорреляционный анализ
+lag_values = range(1, 11)  # Сдвиги от 1 до 10
+autocorrelation_coeffs = [sequence.autocorr(lag) for lag in lag_values]
 
-# 4. Автокорреляционный анализ
-autocorrelation = [np.corrcoef(data[:-lag], data[lag:])[0, 1] for lag in range(1, 21)]
-plt.figure(figsize=(10, 6))
-plt.stem(range(1, 21), autocorrelation, basefmt=" ")
-plt.title("Автокорреляционный анализ (сдвиг 1-20)")
-plt.xlabel("Сдвиг")
-plt.ylabel("Коэффициент автокорреляции")
-plt.grid(True)
-plt.show()
+# Вывод значений коэффициентов автокорреляции
+print("Коэффициенты автокорреляции со сдвигом от 1 до 10:")
+for lag, coeff in zip(lag_values, autocorrelation_coeffs):
+    print(f"Сдвиг {lag}: {coeff:.4f}")
 
 # 5. Аппроксимация распределения
 # На основе коэффициента вариации можно попробовать различные распределения
@@ -77,8 +61,8 @@ else:
 
 # Построение гистограммы и плотности аппроксимированного распределения
 plt.figure(figsize=(10, 6))
-plt.hist(data, bins=20, density=True, edgecolor='black', alpha=0.7, label='Данные')
-plt.plot(x, y, 'r-', lw=2, label=f'{distribution}')
+plt.hist(data, bins=20, density=True, edgecolor="black", alpha=0.7, label="Данные")
+plt.plot(x, y, "r-", lw=2, label=f"{distribution}")
 plt.title(f"Аппроксимация закона распределения - {distribution}")
 plt.xlabel("Значение")
 plt.ylabel("Плотность вероятности")
@@ -92,12 +76,37 @@ simulated_data = stats.uniform.rvs(*params, size=len(data))  # Генераци�
 
 # Построение сравнительного графика
 plt.figure(figsize=(10, 6))
-plt.plot(data, label="Исходная последовательность", marker='o', linestyle='-', color='b')
-plt.plot(simulated_data, label="Сгенерированная последовательность", marker='x', linestyle='--', color='r')
+plt.plot(
+    data, label="Исходная последовательность", marker="o", linestyle="-", color="b"
+)
+plt.plot(
+    simulated_data,
+    label="Сгенерированная последовательность",
+    marker="x",
+    linestyle="--",
+    color="r",
+)
 plt.title("Сравнение исходной и сгенерированной последовательностей")
 plt.xlabel("Индекс")
 plt.ylabel("Значение")
 plt.legend()
+plt.grid(True)
+plt.show()
+
+autocorrelation2 = [
+    np.corrcoef(simulated_data[:-lag], simulated_data[lag:])[0, 1] for lag in lag_values
+]
+
+# Вывод значений коэффициентов автокорреляции
+print("Коэффициенты автокорреляции ГЧП со сдвигом от 1 до 10:")
+for lag, coeff in zip(lag_values, autocorrelation2):
+    print(f"Сдвиг {lag}: {coeff:.4f}")
+
+plt.figure(figsize=(10, 6))
+plt.stem(range(1, 11), autocorrelation2, basefmt=" ")
+plt.title("Автокорреляционный анализ сгенерированной ЧП (сдвиг 1-10)")
+plt.xlabel("Сдвиг")
+plt.ylabel("Коэффициент автокорреляции")
 plt.grid(True)
 plt.show()
 
@@ -110,5 +119,6 @@ results = {
     "Доверительные интервалы": confidence_intervals,
 }
 
-df_results = pd.DataFrame.from_dict(results, orient='index', columns=["Значение"])
+df_results = pd.DataFrame.from_dict(results, orient="index", columns=["Значение"])
 print(df_results)
+print(coef_variation)
