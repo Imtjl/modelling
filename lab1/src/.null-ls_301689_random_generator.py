@@ -16,7 +16,7 @@ def generate_exponential(lambda_param):
 
 
 # Генератор случайных величин по закону Эрланга
-def generate_erlang(k, lambda_param, size=300):
+def generate_erlang(k, lambda_param, size=1000):
     erlang_samples = []
     for _ in range(size):
         sample = sum(generate_exponential(lambda_param) for _ in range(k))
@@ -50,7 +50,7 @@ plt.hist(
 )
 
 # Создание линии аппроксимации
-x_values = np.linspace(0, max(generated_data["values"]), 300)
+x_values = np.linspace(0, max(generated_data["values"]), 1000)
 pdf_fitted = erlang_pdf(x_values, k, lambda_param)
 
 # Добавление линии аппроксимации на график
