@@ -1,0 +1,25 @@
+
+
+\subsection{Code}
+
+\begin{lstlisting}
+import math
+import random
+
+k = 2
+lambda_param = 0.0144
+
+def generate_exponential(lambda_param):
+    return -math.log(random.random()) / lambda_param
+
+def generate_erlang(k, lambda_param, size=1000):
+    erlang_samples = []
+    for _ in range(size):
+        sample = sum(
+            generate_exponential(lambda_param) for _ in range(k)
+        )
+        erlang_samples.append(sample)
+    return erlang_samples
+
+generated_data = generate_erlang(k, lambda_param)
+\end{lstlisting}

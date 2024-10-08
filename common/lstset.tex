@@ -1,14 +1,20 @@
 % listing for programming code blocks
+% listing for Python code blocks
 \lstset{
-	language=C++,                 % Programming language
-	basicstyle=\ttfamily\normalsize, % Adjust font size
-	keywordstyle=\color{blue},    % Style for keywords
-	stringstyle=\color{red},      % Style for strings
-	commentstyle=\color{gray},   % Style for comments
-	morecomment=[l][\color{magenta}]{\#}, % Special comment style
-	breaklines=true,              % Line breaking in long lines
-	numbers=left,                 % Line numbering on the left
-	numberstyle=\tiny\color{gray},% Style for line numbers
-	frame=single,                 % Code frame
-	showstringspaces=false        % Don't show spaces in strings
+	language=python,                 % Programming language
+	basicstyle=\ttfamily\small,      % Adjust font size
+	keywordstyle=\color{blue}\bfseries,  % Style for keywords
+	stringstyle=\color{red},         % Style for strings
+	commentstyle=\color{gray}\itshape, % Style for comments
+	morecomment=[l][\color{magenta}]{\#}, % Special comment style for Python comments
+	breaklines=true,                 % Line breaking in long lines
+	numbers=left,                    % Line numbering on the left
+	numberstyle=\tiny\color{gray},   % Style for line numbers
+	frame=single,                    % Code frame
+	showstringspaces=false,          % Don't show spaces in strings
+	captionpos=b,                    % Caption position (b = bottom)
+	tabsize=4,                       % Adjust tab spacing
+	rulecolor=\color{black},         % Color of the frame
+	emph={self},                     % Specific highlighting for keywords like 'self'
+	emphstyle=\color{teal},          % Style for emphasized words (like 'self')
 }

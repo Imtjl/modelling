@@ -13,12 +13,6 @@ sequence = data_df["values"]
 data = data_df["values"].values
 sizes = [10, 20, 50, 100, 200, 300]
 
-# Визуализация временного ряда
-plt.figure(figsize=(10, 4))
-plt.plot(data)
-plt.title("Экспоненциальный временной ряд")
-plt.show()
-
 # Коэффициент вариации для полной выборки (N=300)
 full_sample_size = 300
 full_sample = data[:full_sample_size]
